@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css"/>
+    <script type="text/javascript" src="{{ STATIC_URL }}javascript/common.js"></script>
   </head>
   <body>
-    <h2>Economic Indicators</h2>
-    {{ form.as_table }}
+    <div class="container tm20">
+        <div class="left-column">
+        <h2>Economic Indicators</h2>
+        <div class="">
+            {% for indicator in indicators %}
+            <a href="#" class="btn" id="{{ indicator.short_name }}">{{ indicator.long_name }}</a>
+            {% endfor %}
+        </div>
+        </div><!-- left column-->
+        <div class="right-column">
+            <h3 id="right-col-heading">{{ heading.short_name }}-{{ heading.long_name }}</h3>
+            <input type="hidden" value="{{ heading.short_name }}">
+        {{ form.as_table }}
+        <a class="btn btn-primary">Submit</a>
+        </div>
+    </div><!-- container -->
   </body>
 </html>
 

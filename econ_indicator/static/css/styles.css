@@ -1,0 +1,13 @@
+.right-column {
+    width: 65%;
+    border: 1px solid #ccc;
+    float: right;
+    padding: 10px;
+}
+.left-column {
+    width: 30%;
+    border: 1px solid #ccc;
+    float: left;
+}
+
+.tm20{margin-top:20px;}
