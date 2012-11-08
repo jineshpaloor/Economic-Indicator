@@ -9,7 +9,7 @@
   <body>
     <div class="container tm20">
         <div class="left-column">
-        <h2>Economic Indicators</h2>
+        <h3>Economic Indicators</h3>
         <div class="">
             {% for indicator in indicators %}
             <a href="#" class="btn econ-indicator" id="{{ indicator.pk }}">{{ indicator.long_name }}</a>
@@ -22,6 +22,7 @@
                 {% csrf_token %}
                 <input type="hidden" id="id_indicator" name="indicator" value="{{ heading.pk }}">
                 {{ form.as_table }}
+                <br />
                 <br />
                 <input type="SUBMIT" class="btn btn-primary" id="history-form" value="Submit">
             </form>
