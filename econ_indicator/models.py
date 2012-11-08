@@ -19,8 +19,8 @@ class EconomicIndicator(models.Model):
 class History(models.Model):
     country = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    year = models.CharField(max_length=4, choices=[(year,year) for year in range(2000,2013)])
-    month = models.CharField(max_length=2, choices=[(month,month) for month in range(1,13)])
+    year = models.CharField(max_length=10,choices=[(str(year),str(year)) for year in range(2000,2013)])
+    month = models.CharField(max_length=10,choices=[(str(month),str(month)) for month in range(1,13)])
     nominal = models.CharField(max_length=100)
     indicator = models.ForeignKey(EconomicIndicator)
 

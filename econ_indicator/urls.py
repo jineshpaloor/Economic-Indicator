@@ -7,10 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'econ_indicator.views.home', name='home'),
-    # url(r'^econ_indicator/', include('econ_indicator.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^getindicator/$', 'econ_indicator.views.get_indicator', name='get-indicator'),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),

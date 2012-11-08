@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css"/>
+    <script type="text/javascript" src="{{ STATIC_URL }}javascript/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}javascript/common.js"></script>
   </head>
   <body>
@@ -11,15 +12,25 @@
         <h2>Economic Indicators</h2>
         <div class="">
             {% for indicator in indicators %}
-            <a href="#" class="btn" id="{{ indicator.short_name }}">{{ indicator.long_name }}</a>
+            <a href="#" class="btn econ-indicator" id="{{ indicator.pk }}">{{ indicator.long_name }}</a>
             {% endfor %}
         </div>
         </div><!-- left column-->
         <div class="right-column">
             <h3 id="right-col-heading">{{ heading.short_name }}-{{ heading.long_name }}</h3>
-            <input type="hidden" value="{{ heading.short_name }}">
-        {{ form.as_table }}
-        <a class="btn btn-primary">Submit</a>
+            <form class="form-horizontal" method="POST" action="." >
+                {% csrf_token %}
+                <input type="hidden" id="id_indicator" name="indicator" value="{{ heading.pk }}">
+                {{ form.as_table }}
+                <br />
+                <input type="SUBMIT" class="btn btn-primary" id="history-form" value="Submit">
+            </form>
+            <div id="submit-result">
+                {% if history %}
+                <p>Last entered the nominal value of {{ history.nominal }} for {{ history.year }},
+                {{ history.month }} for {{ history.country }},{{ history.state }}.</p>
+                {% endif %}
+            </div>
         </div>
     </div><!-- container -->
   </body>

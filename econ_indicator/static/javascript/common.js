@@ -1,24 +1,16 @@
 
-var getAjax = function(indicator){
+$(".econ-indicator").live('click', function(){
+    var id = $(this).attr('id');
+    var indicator = $("#id_indicator");
+    var head = $("#right-col-heading");
     $.ajax({
-        url:'/getindicator',
+        url:'/getindicator/',
         type: 'GET',
-        data:{'indicator': indicator},
+        data:{'indicator': id},
         success: function (resp){
-            console.log("response  :",resp);
+            $(head).html(resp.short_name+'-'+resp.long_name);
+            $(indicator).val(resp.ind_id);
         }
     });
-};
-
-$("#CPI").live('click', function(){
-    getAjax("cpi");
-});
-
-$("#PPI").live('click', function(){
-    getAjax("PPI");
-});
-
-$("#GDP").live('click', function(){
-    getAjax("GDP");
 });
 
